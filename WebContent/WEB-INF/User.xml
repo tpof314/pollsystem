@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user id="1">
+		<name>rex</name>
+		<password>12345</password>
+		<email>rex@12345.com</email>
+	</user>
+	<user id="2">
+		<name>hello</name>
+		<password>43321</password>
+		<email>hello@12345.com</email>
+	</user>
+	<user id="3">
+		<name>ray</name>
+		<password>abcdf</password>
+		<email>ray@12345.com</email>
+	</user>
+</users>

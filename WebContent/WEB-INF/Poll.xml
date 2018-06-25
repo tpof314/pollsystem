@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<polls>
+    <polls>
+        <poll id="1">
+            <title>Study for the final exam</title>
+            <creator>2</creator>
+            <description>I'm pretty bad with tests and usually do it the night before, just wanted to book a room in the main building and study for the final exam with anyone who would like to to do so. We may discuss the contents and do past exam papers together.</description>
+            <date>2016-05-18T22:38:00.173+10:00</date>
+            <location>UTS Main Building</location>
+            <status>Open</status>
+            <timetable>
+                <time>19/05/2016 2:00 pm</time>
+                <names>
+                    <name>Jerry</name>
+                    <name>Michael</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>19/05/2016 3:00 pm</time>
+                <names>
+                    <name>Lucy</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>20/05/2016 2:00 pm</time>
+                <names>
+                    <name>Peter</name>
+                    <name>Julia</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>20/05/2016 3:00 pm</time>
+                <names/>
+            </timetable>
+        </poll>
+        <poll id="2">
+            <title>Study for the final exam 2</title>
+            <creator>1</creator>
+            <description>Again, I'm pretty bad with tests and usually do it the night before, just wanted to book a room in the main building and study for the final exam with anyone who would like to to do so. We may discuss the contents and do past exam papers together.</description>
+            <date>2016-05-18T22:38:00.174+10:00</date>
+            <location>UTS Main Building</location>
+            <status>Close</status>
+            <timetable>
+                <time>19/05/2016 2:00 pm</time>
+                <names>
+                    <name>Jerry</name>
+                    <name>Michael</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>19/05/2016 3:00 pm</time>
+                <names>
+                    <name>Lucy</name>
+                    <name>Peter</name>
+                    <name>Julia</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>20/05/2016 2:00 pm</time>
+                <names/>
+            </timetable>
+        </poll>
+        <poll id="3">
+            <title>Study for the final exam 2</title>
+            <creator>1</creator>
+            <description>Again, I'm pretty bad with tests and usually do it the night before, just wanted to book a room in the main building and study for the final exam with anyone who would like to to do so. We may discuss the contents and do past exam papers together.</description>
+            <date>2016-05-18T22:38:00.174+10:00</date>
+            <location>UTS Main Building</location>
+            <status>Open</status>
+            <timetable>
+                <time>19/05/2016 2:00 pm</time>
+                <names>
+                    <name>James</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>19/05/2016 3:00 pm</time>
+                <names>
+                    <name>Leo</name>
+                    <name>Tony</name>
+                </names>
+            </timetable>
+            <timetable>
+                <time>20/05/2016 2:00 pm</time>
+                <names>
+                    <name>Tom</name>
+                    <name>Alex</name>
+                </names>
+            </timetable>
+        </poll>
+    </polls>
+</polls>

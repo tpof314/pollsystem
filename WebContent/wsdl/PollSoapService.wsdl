@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soap.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap.com" xmlns:intf="http://soap.com" xmlns:tns1="http://dataaccess.com" xmlns:tns2="http://model.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dataaccess.com"/>
+   <import namespace="http://model.com"/>
+   <element name="createPoll">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="title" type="xsd:string"/>
+      <element name="location" type="xsd:string"/>
+      <element name="status" type="xsd:string"/>
+      <element name="description" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPollResponse">
+    <complexType>
+     <sequence>
+      <element name="createPollReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="closePoll">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="pollid" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="closePollResponse">
+    <complexType>
+     <sequence>
+      <element name="closePollReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchPoll">
+    <complexType>
+     <sequence>
+      <element name="creator" type="xsd:int"/>
+      <element name="status" type="xsd:string"/>
+      <element name="minResponses" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchPollResponse">
+    <complexType>
+     <sequence>
+      <element name="searchPollReturn" type="tns1:Polls"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dataaccess.com"/>
+   <import namespace="http://soap.com"/>
+   <complexType name="Poll">
+    <sequence>
+     <element name="creator" type="xsd:int"/>
+     <element name="date" nillable="true" type="xsd:dateTime"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="location" nillable="true" type="xsd:string"/>
+     <element name="polltime" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="title" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dataaccess.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://soap.com"/>
+   <import namespace="http://model.com"/>
+   <complexType name="Polls">
+    <sequence>
+     <element maxOccurs="unbounded" name="pollDetail" nillable="true" type="tns2:Poll"/>
+     <element name="pollList" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="searchPollResponse">
+
+      <wsdl:part element="impl:searchPollResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPollRequest">
+
+      <wsdl:part element="impl:createPoll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="closePollResponse">
+
+      <wsdl:part element="impl:closePollResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="closePollRequest">
+
+      <wsdl:part element="impl:closePoll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPollResponse">
+
+      <wsdl:part element="impl:createPollResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchPollRequest">
+
+      <wsdl:part element="impl:searchPoll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PollSoapService">
+
+      <wsdl:operation name="createPoll">
+
+         <wsdl:input message="impl:createPollRequest" name="createPollRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createPollResponse" name="createPollResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="closePoll">
+
+         <wsdl:input message="impl:closePollRequest" name="closePollRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:closePollResponse" name="closePollResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchPoll">
+
+         <wsdl:input message="impl:searchPollRequest" name="searchPollRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchPollResponse" name="searchPollResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PollSoapServiceSoapBinding" type="impl:PollSoapService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createPoll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createPollRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createPollResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="closePoll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="closePollRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="closePollResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchPoll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchPollRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchPollResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PollSoapServiceService">
+
+      <wsdl:port binding="impl:PollSoapServiceSoapBinding" name="PollSoapService">
+
+         <wsdlsoap:address location="http://localhost:8080/Assignment/services/PollSoapService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

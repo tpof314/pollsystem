@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PollSoapServiceService WSDL service -->
+
+  <service name="PollSoapService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soap.com"/>
+      <parameter name="wsdlServiceElement" value="PollSoapServiceService"/>
+      <parameter name="schemaQualified" value="http://model.com,http://soap.com,http://dataaccess.com"/>
+      <parameter name="wsdlServicePort" value="PollSoapService"/>
+      <parameter name="className" value="com.soap.PollSoapService"/>
+      <parameter name="wsdlPortType" value="PollSoapService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://soap.com" xmlns:retNS="http://soap.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createPoll" qname="operNS:createPoll" returnQName="retNS:createPollReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:title" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:location" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:status" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:description" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://soap.com" xmlns:retNS="http://soap.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="closePoll" qname="operNS:closePoll" returnQName="retNS:closePollReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pollid" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://soap.com" xmlns:retNS="http://soap.com" xmlns:rtns="http://dataaccess.com" name="searchPoll" qname="operNS:searchPoll" returnQName="retNS:searchPollReturn" returnType="rtns:Polls" soapAction="">
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:creator" type="tns:int"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:status" type="tns:string"/>
+        <parameter xmlns:pns="http://soap.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:minResponses" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="createPoll searchPoll closePoll"/>
+
+      <arrayMapping xmlns:ns="http://soap.com" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dataaccess.com" qname="ns:Polls" type="java:com.dataaccess.Polls" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://soap.com" qname="ns:&gt;searchPoll" type="java:com.soap.SearchPoll" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://soap.com" qname="ns:&gt;searchPollResponse" type="java:com.soap.SearchPollResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://soap.com" qname="ns:&gt;closePollResponse" type="java:com.soap.ClosePollResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://soap.com" qname="ns:&gt;createPoll" type="java:com.soap.CreatePoll" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://soap.com" qname="ns:&gt;closePoll" type="java:com.soap.ClosePoll" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model.com" qname="ns:Poll" type="java:com.model.Poll" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://soap.com" qname="ns:&gt;createPollResponse" type="java:com.soap.CreatePollResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
